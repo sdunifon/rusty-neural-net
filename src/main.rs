@@ -1,8 +1,32 @@
+use network::Network;
 use std::array;
 
+mod graph;
+mod network;
+mod new_main;
+mod pet_graph;
+
+use new_main::new_main;
+use pet_graph::pet_graph_main;
+
+static count: u32 = 0;
 fn main() {
-    println!("Hello, world!");
-    dbg!(sigmoid(&[1.0, 2.0, 3.0]));
+    // let a = Network::new([1, 2, 3].to_vec());
+    // println!("Hello, world!");
+    // dbg!(sigmoid(&[1.0, 2.0, 3.0]));
+    //
+    let add_to = |x: i32| move |y: i32| x + y;
+
+    let fiver = add_to(5);
+
+    println!("={}", fiver(7));
+
+    let some_u8_value = Some(3u8);
+    if let Some(3) = some_u8_value {
+        println!("three");
+    }
+    new_main();
+    pet_graph_main();
 }
 
 fn sigmoid<const N: usize>(array: &[f64; N]) -> Vec<f64> {
@@ -11,20 +35,8 @@ fn sigmoid<const N: usize>(array: &[f64; N]) -> Vec<f64> {
         .into_iter()
         .map(|x| return x.exp())
         .collect::<Vec<f64>>();
-    // .into_iter()
-    // .map(|x| return x)
-    // .collect::<[f64; N]>();
-    // .collect::<&[f64; N]>();
-    // let exp_array: &[f64; N] = array.iter().map(|x| return x).collect::<&[f64; N]>();
-
-    // return exp_array.into_iter().collect();
 }
 
-// fn sigmoid_vector<T: Iterator>(array: &T) -> Vec<T> {
-//     let exp_array = array.into_iter().map(|x| return x);
-
-//     return &exp_array.collect();
-// }
 #[cfg(test)]
 mod tests {
     use std::future::pending;
@@ -38,12 +50,4 @@ mod tests {
             &[2.718281828459045, 7.38905609893065, 20.085536923187668]
         )
     }
-    // #[test]
-    // fn sigmoid_vector_test() {
-    //     pending();
-    //     assert_eq!(
-    //         sigmoid(vec!([1.0, 2.0, 3.0])),
-    //         &[2.71828183, 7.3890561, 20.08553692]
-    //     );
-    // }
 }

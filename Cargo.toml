@@ -9,3 +9,5 @@ edition = "2021"
 
 [dependencies]
 float-cmp = "0.9.0"
+rand = "0.8.4"
+petgraph = "0.6.0"
