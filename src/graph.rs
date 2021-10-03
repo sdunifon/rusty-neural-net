@@ -29,12 +29,12 @@ fn main() {
 // }
 ///
 #[derive(Clone, Copy)]
-struct Row<T, const N: usize> {
+pub struct Row<T, const N: usize> {
     array: [T; N],
 }
 ///
 #[derive(Clone, Copy)]
-struct Column<T, const N: usize> {
+pub struct Column<T, const N: usize> {
     array: [T; N],
 }
 pub struct Graph<T, const W: usize, const H: usize> {
@@ -46,7 +46,7 @@ impl<T, const W: usize, const H: usize> Graph<T, W, H> {
 }
 ///
 impl<T: Copy, const N: usize> Column<T, N> {
-    fn new(x: T) -> Column<T, N> {
+    pub fn new(x: T) -> Column<T, N> {
         let a: Column<T, N> = Column { array: [x; N] };
         return a;
     }

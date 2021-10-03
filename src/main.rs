@@ -1,3 +1,4 @@
+use graph::Column;
 use network::Network;
 use std::array;
 
@@ -10,6 +11,7 @@ use new_main::new_main;
 use pet_graph::pet_graph_main;
 
 static count: u32 = 0;
+type GraphCol = Column<i32, 50>;
 fn main() {
     // let a = Network::new([1, 2, 3].to_vec());
     // println!("Hello, world!");
@@ -25,6 +27,8 @@ fn main() {
     if let Some(3) = some_u8_value {
         println!("three");
     }
+    let col = Column::<i32, 25>::new(34);
+    let gcol = GraphCol::new(22);
     new_main();
     pet_graph_main();
 }
