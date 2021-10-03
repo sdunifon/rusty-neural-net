@@ -29,25 +29,47 @@ fn main() {
 // }
 ///
 #[derive(Clone, Copy)]
+pub struct Node<'a, const E: usize> {
+    bias: f64,
+    edges: [Edge<'a, E>; E],
+}
+
+#[derive(Clone, Copy)]
+pub struct Edge<'a, const NEXT_LAYER_SIZE: usize> {
+    weight: f64,
+    node: &'a Node<'a, NEXT_LAYER_SIZE>,
+}
+
+#[derive(Clone, Copy)]
 pub struct Row<T, const N: usize> {
     array: [T; N],
 }
 ///
+
+pub type Layer<'a, const THIS_LAYER_SIZE: usize, const NEXT_LAYER_SIZE: usize> = [Node<'a, NEXT_LAYER_SIZE>; THIS_LAYER_SIZE];
+
+// #[derive(Clone, Copy)]
+// pub struct NodeColumn<const N: usize> {
+//     array: [T; N],
+// }
 #[derive(Clone, Copy)]
-pub struct Column<T, const N: usize> {
-    array: [T; N],
+pub struct Graph<'a, const LAYER_COUNT: usize, const NEXT_LAYER_SIZE: usize> {
+    layers: Layer<'a, LAYER_COUNT, NEXT_LAYER_SIZE>,
 }
-pub struct Graph<T, const W: usize, const H: usize> {
-    matrix: Column<Row<T, W>, H>,
-}
+
 // impl<T, W, H> Graph {
-impl<T, const W: usize, const H: usize> Graph<T, W, H> {
-    fn new(h: usize, w: usize) {}
+pub impl<'a, const LAYER_COUNT: usize, const NEXT_LAYER_SIZE: usize>
+    Graph<'a, LAYER_COUNT, NEXT_LAYER_SIZE>
+{
+    pub fn new(h: usize, w: usize) {}
 }
 ///
-impl<T: Copy, const N: usize> Column<T, N> {
-    pub fn new(x: T) -> Column<T, N> {
-        let a: Column<T, N> = Column { array: [x; N] };
+impl <'a, const THIS_LAYER_SIZE: usize, const NEXT_LAYER_SIZE: usize> Layer<'a, THIS_LAYER_SIZE,NEXT_LAYER_SIZE>{ 
+    pub fn new(x: T) -> Layer<'a, THIS_LAYER_SIZE,NEXT_LAYER_SIZE> {
+        // let a: Column<T, N> = Column { array: [x; N] };
+        Layer<NEXT_LAYER_SIZE>
+
+
         return a;
     }
 }
