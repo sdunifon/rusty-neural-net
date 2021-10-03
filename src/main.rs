@@ -10,7 +10,7 @@ use new_main::new_main;
 use pet_graph::pet_graph_main;
 
 static count: u32 = 0;
-use graph::Layer;
+use graph::*;
 
 fn main() {
     // let a = Network::new([1, 2, 3].to_vec());
@@ -27,7 +27,9 @@ fn main() {
     if let Some(3) = some_u8_value {
         println!("three");
     }
-    let gcol = graph::Layer::new(22);
+    let graph = Graph::<4, 4>::new();
+    let l = Layer::<8, 8>::new();
+    // let layers = ["asdf"; 4];
 }
 
 fn sigmoid<const N: usize>(array: &[f64; N]) -> Vec<f64> {
