@@ -1,3 +1,5 @@
+#![feature(generic_const_exprs)]
+#![feature(test)]
 use network::Network;
 use std::array;
 
@@ -7,9 +9,10 @@ mod graph;
 mod input;
 mod network;
 mod new_main;
-mod pet_graph;
+// mod pet_graph;
 
-use input::{file_main, main_image};
+use input::main as input_main;
+
 // use pet_graph::pet_graph_main;
 
 static count: u32 = 0;
@@ -32,9 +35,8 @@ fn main() {
     }
     let graph = Graph::<4, 4>::new();
     let l = Layer::<8, 8>::new();
+    input_main();
     // let layers = ["asdf"; 4];
-    main_image();
-    file_main();
 }
 
 fn sigmoid<const N: usize>(array: &[f64; N]) -> Vec<f64> {
