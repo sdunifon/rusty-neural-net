@@ -1,7 +1,7 @@
-use super::InputFile;
-use image::{GenericImage, GenericImageView, ImageBuffer, Luma, RgbImage};
-use std::path::Path;
-use std::{ops::Index, process::Output};
+
+use image::{GenericImageView, ImageBuffer, Luma};
+
+use std::{ops::Index};
 
 pub struct InputImage<const H: usize, const W: usize>
 where
@@ -35,7 +35,7 @@ where
     }
 
     pub fn to_image_buffer(&self) -> ImageBuffer<Luma<u8>, Vec<u8>> {
-        let mut img = ImageBuffer::from_fn(self.height as u32, self.width as u32, |x, y| {
+        let img = ImageBuffer::from_fn(self.height as u32, self.width as u32, |x, y| {
             image::Luma([self[(x as usize + (y as usize * W))]])
         });
         img

@@ -1,8 +1,8 @@
 use super::InputImage;
 use rayon::prelude::*;
 use std::fs::File;
-use std::io;
-use std::io::prelude::*;
+
+
 use std::os::unix::fs::FileExt;
 
 pub struct InputFile<'a> {
@@ -20,7 +20,7 @@ impl<'a> InputFile<'a> {
     const IMAGE_BUFFER_SIZE: usize = 28 * 28; //using so we don't have to allocate on stack.. protectino in image_buffer_size method
 
     pub fn new(file_name: &'a str) -> Self {
-        let mut file = File::open("data/t10k-images-idx3-ubyte").unwrap();
+        let file = File::open("data/t10k-images-idx3-ubyte").unwrap();
         let (count, image_height, image_width) = Self::get_image_count_height_and_width(&file);
         let input_file = Self {
             file_name,
@@ -78,7 +78,7 @@ impl<'a> InputFile<'a> {
 mod tests {
     use super::*;
     extern crate test;
-    use test::Bencher;
+    
 
     fn load_input_file() -> InputFile<'static> {
         InputFile::new("data/t10k-images-idx3-ubyte")

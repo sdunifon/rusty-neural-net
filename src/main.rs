@@ -1,8 +1,8 @@
 #![feature(generic_const_exprs)]
 #![feature(test)]
 
-use network::Network;
-use std::array;
+
+
 
 extern crate image;
 extern crate rayon;
@@ -35,8 +35,8 @@ fn main() {
     if let Some(3) = some_u8_value {
         println!("three");
     }
-    let graph = Graph::<4, 4>::new();
-    let l = Layer::<8, 8>::new();
+    let _graph = Graph::<4, 4>::new();
+    let _l = Layer::<8, 8>::new();
     input_main();
     // let layers = ["asdf"; 4];
 }
