@@ -7,6 +7,6 @@ pub use input_image::InputImage;
 pub fn main() {
     println!("Generating files...");
     let f = InputFile::new("data/t10k-images-idx3-ubyte");
-    f.render_image_files();
+    f.render_image_files_parallel();
     println!("Done!");
 }

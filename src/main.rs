@@ -4,6 +4,7 @@ use network::Network;
 use std::array;
 
 extern crate image;
+extern crate rayon;
 
 mod graph;
 mod input;

@@ -1,4 +1,5 @@
 use super::InputImage;
+use rayon::prelude::*;
 use std::fs::File;
 use std::io;
 use std::io::prelude::*;
@@ -66,6 +67,11 @@ impl<'a> InputFile<'a> {
             self.image(n.into()).to_file();
         }
     }
+    pub fn render_image_files_parallel(&self) {
+        (0..self.count)
+            .into_par_iter()
+            .for_each(|x| self.image(x.into()).to_file());
+    }
 }
 
 //#[cfg(test)]
@@ -97,7 +103,7 @@ mod tests {
         assert_eq!(i.image_buffer_size(), 28 * 28);
     }
     #[test]
-    fn test_data_For_image() {
+    fn test_data_for_image() {
         let i = load_input_file();
         dbg!("a:{}", &i.data_for_image(0)[206..300],);
         let mut image_index = 0;
@@ -124,5 +130,10 @@ mod tests {
     fn render_image_files_benchmark(b: &mut test::Bencher) {
         let f = InputFile::new("data/t10k-images-idx3-ubyte");
         b.iter(|| f.render_image_files())
+    }
+    #[bench]
+    fn render_image_files_benchmark(b: &mut test::Bencher) {
+        let f = InputFile::new("data/t10k-images-idx3-ubyte");
+        b.iter(|| f.render_image_files_parallel())
     }
 }
