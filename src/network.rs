@@ -34,10 +34,10 @@ impl Network {
 mod tests {
     use super::*;
 
-    #[test]
-    fn test_random_array() {
-        let v2 = Network::random_array(5);
-        dbg!("asdf{}", v2);
-        // assert_eq!(Network::random_array(5)[..], vec!([1, 2, 3]))
-    }
+    // #[test]
+    // fn test_random_array() {
+    //     let v2 = Network::random_array(5);
+    //     dbg!("asdf{}", v2);
+    //     // assert_eq!(Network::random_array(5)[..], vec!([1, 2, 3]))
+    // }
 }
