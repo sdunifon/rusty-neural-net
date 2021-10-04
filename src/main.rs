@@ -1,5 +1,6 @@
 #![feature(generic_const_exprs)]
 #![feature(test)]
+
 use network::Network;
 use std::array;
 
