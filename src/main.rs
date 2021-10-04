@@ -1,13 +1,16 @@
 use network::Network;
 use std::array;
 
+extern crate image;
+
 mod graph;
+mod input;
 mod network;
 mod new_main;
 mod pet_graph;
 
-use new_main::new_main;
-use pet_graph::pet_graph_main;
+use input::{file_main, main_image};
+// use pet_graph::pet_graph_main;
 
 static count: u32 = 0;
 use graph::*;
@@ -30,6 +33,8 @@ fn main() {
     let graph = Graph::<4, 4>::new();
     let l = Layer::<8, 8>::new();
     // let layers = ["asdf"; 4];
+    main_image();
+    file_main();
 }
 
 fn sigmoid<const N: usize>(array: &[f64; N]) -> Vec<f64> {
