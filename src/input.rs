@@ -2,7 +2,7 @@ mod input_file;
 mod input_image;
 
 pub use input_file::InputFile;
-pub use input_image::InputImage;
+pub use input_image::*;
 
 pub fn main() {
     println!("Generating files...");

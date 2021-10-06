@@ -1,7 +1,8 @@
-
 use image::{GenericImageView, ImageBuffer, Luma};
 
-use std::{ops::Index};
+use std::{ops::Index, path::Path};
+
+use super::InputFile;
 
 pub struct InputImage<const H: usize, const W: usize>
 where

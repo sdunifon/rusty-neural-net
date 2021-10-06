@@ -2,7 +2,6 @@ use super::InputImage;
 use rayon::prelude::*;
 use std::fs::File;
 
-
 use std::os::unix::fs::FileExt;
 
 pub struct InputFile<'a> {
@@ -78,7 +77,6 @@ impl<'a> InputFile<'a> {
 mod tests {
     use super::*;
     extern crate test;
-    
 
     fn load_input_file() -> InputFile<'static> {
         InputFile::new("data/t10k-images-idx3-ubyte")
@@ -130,10 +128,5 @@ mod tests {
     fn render_image_files_benchmark(b: &mut test::Bencher) {
         let f = InputFile::new("data/t10k-images-idx3-ubyte");
         b.iter(|| f.render_image_files())
-    }
-    #[bench]
-    fn render_image_files_benchmark(b: &mut test::Bencher) {
-        let f = InputFile::new("data/t10k-images-idx3-ubyte");
-        b.iter(|| f.render_image_files_parallel())
     }
 }

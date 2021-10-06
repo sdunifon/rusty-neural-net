@@ -1,9 +1,7 @@
-#![feature(generic_const_exprs)]
 #![feature(test)]
-
-
-
-
+#![feature(generic_const_exprs)]
+#![feature(associated_type_defaults)]
+#![feature(generic_arg_infer)]
 extern crate image;
 extern crate rayon;
 
@@ -36,7 +34,6 @@ fn main() {
         println!("three");
     }
     let _graph = Graph::<4, 4>::new();
-    let _l = Layer::<8, 8>::new();
     input_main();
     // let layers = ["asdf"; 4];
 }
